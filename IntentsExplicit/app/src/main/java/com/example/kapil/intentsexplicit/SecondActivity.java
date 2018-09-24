@@ -15,7 +15,7 @@ public class SecondActivity extends AppCompatActivity {
   // getIntent() is the function to take the value from the intent that started in first activity
         Intent intentThatstartedthis = getIntent();
 
-        //getIntExtra () is function that takes key value pairs from and returns it to result
+        //getIntExtra () is function that takes key value pairs from put Extra() and returns it to result
         int result= intentThatstartedthis.getIntExtra("result",0);
         tvResult.setText(String.valueOf(result));
     }
