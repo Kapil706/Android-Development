@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         lvNames=findViewById(R.id.lvNames);
 // Adapters are the one which puts your dataView to your ScreeView
         //Adapters are generic and take parameter of that type which is same as that the object we are inflating i.e String in this case
-
+//ArrayAdapter is used for one item into one text view or one object into one inflated view
         ArrayAdapter<String> namesAdapter = new ArrayAdapter<>( this, // for current context that is MainActivity
                 android.R.layout.simple_list_item_1, // This is for the type of view you want to show on the screen
                 android.R.id.text1, // This is for connecting layout with text
