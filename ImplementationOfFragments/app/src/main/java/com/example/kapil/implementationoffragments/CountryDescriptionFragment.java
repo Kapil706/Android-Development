@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
+import android.util.Log;
 public class CountryDescriptionFragment extends Fragment {
     private static final String COMMON_TAG = "CombinedLifeCycle";
     private static final String FRAGMENT_NAME = CountryDescriptionFragment.class.getSimpleName();
@@ -33,15 +33,37 @@ public class CountryDescriptionFragment extends Fragment {
     private void initUI(){
         textViewCountryDescription = (TextView)rootView.findViewById(R.id.textViewCountryDescription);
     }
-
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.i("OrintationChange","CountryDescriptionFragment onSaveInstanceState");
+        outState.putString("selectedCountry",countryName);
+    }
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Bundle bundle = getArguments();  // It will receive the value of bundle set by mainactivity
+        if(savedInstanceState!=null){
+            countryName = savedInstanceState.getString("selectedCountry",countryName);
+            countryDescription = getString(getStringId(countryName));
+        }else {
+            Bundle bundle = getArguments();
+            countryName = bundle.getString(FragmentActionListener.KEY_SELECTED_COUNTRY,"India");
+            countryDescription = getString(getStringId(countryName));
+        }
 
-        countryName = bundle.getString(FragmentActionListener.KEY_SELECTED_COUNTRY,"India");
-        countryDescription = getString(getStringId(countryName));
+
     }
+
+//    @Override
+//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+////        super.onActivityCreated(savedInstanceState);
+////        Bundle bundle = getArguments();  // It will receive the value of bundle set by mainactivity
+////
+////        countryName = bundle.getString(FragmentActionListener.KEY_SELECTED_COUNTRY,"India");
+////        countryDescription = getString(getStringId(countryName));
+//
+//
+//    }
 
     @Override
     public void onResume() {
