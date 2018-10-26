@@ -1,0 +1,98 @@
+<resources>
+    <string name="app_name">RecyclerView</string>
+    <string name="advertisement_space">Advertise here</string>
+
+    <string-array name="names">
+        <item>Anil</item>
+        <item>Ajay</item>
+        <item>Amit</item>
+        <item>Ashwini</item>
+        <item>George</item>
+        <item>Anna</item>
+        <item>Pooja</item>
+        <item>Amir</item>
+        <item>Ajit</item>
+        <item>William</item>
+        <item>Jane</item>
+        <item>John</item>
+        <item>Anikita</item>
+        <item>Rahul</item>
+    </string-array>
+
+    <string-array name="lastnames">
+        <item>Deshpande</item>
+        <item>Kolhar</item>
+        <item>Trivedi</item>
+        <item>Mudaliar</item>
+        <item>Patton</item>
+        <item>Atkins</item>
+        <item>Batra</item>
+        <item>Khan</item>
+        <item>Nair</item>
+        <item>Beck</item>
+        <item>Dakota</item>
+        <item>Ferrel</item>
+        <item>Nahar</item>
+        <item>Dev</item>
+
+    </string-array>
+
+    <string-array name="gender">
+        <item>male</item>
+        <item>male</item>
+        <item>male</item>
+        <item>female</item>
+        <item>male</item>
+        <item>female</item>
+        <item>female</item>
+        <item>male</item>
+        <item>male</item>
+        <item>male</item>
+        <item>female</item>
+        <item>male</item>
+        <item>female</item>
+        <item>male</item>
+    </string-array>
+
+    <string-array name="nationality">
+        <item>Indian</item>
+        <item>Indian</item>
+        <item>Indian</item>
+        <item>Indian</item>
+        <item>British</item>
+        <item>British</item>
+        <item>Indian</item>
+        <item>Indian</item>
+        <item>Indian</item>
+        <item>USA</item>
+        <item>Australian</item>
+        <item>USA</item>
+        <item>Indian</item>
+        <item>Indian</item>
+    </string-array>
+
+    <string name="nationality_prompt">Nationality</string>
+
+    <string-array name="nationalities">
+        <item>Indian</item>
+        <item>USA</item>
+        <item>Australian</item>
+        <item>British</item>
+        <item>Bangladesh</item>
+        <item>Sri Lanka</item>
+    </string-array>
+
+
+    <string-array name="advertisementMessages">
+        <item>Visit Coding Blocks!!</item>
+        <item>Learn Android </item>
+        <item>Ace Upon world</item>
+        <item>Start your Startup</item>
+    </string-array>
+
+
+
+
+</resources>
+
+
