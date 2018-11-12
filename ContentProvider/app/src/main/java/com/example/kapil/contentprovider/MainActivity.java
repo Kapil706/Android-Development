@@ -12,7 +12,9 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 // So content providers are useful when a third party app wants to access the data from the system app installed on the android device
 // So content resolver send the data request to the app and then app responds to it using content provider
@@ -52,24 +54,32 @@ public class MainActivity extends AppCompatActivity {
 
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
-                !=PackageManager.PERMISSION_GRANTED){
+                !=PackageManager.PERMISSION_GRANTED)
+        {Log.i("1", "Permission is not granted");
             if(ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.READ_CONTACTS)){
-                new AlertDialog.Builder(this)
-                        .setMessage("We need Contact Permission to proceed")
-                        .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                ActivityCompat.requestPermissions(MainActivity.this,new String[]
-                                        {Manifest.permission.READ_CONTACTS},CONTACT);
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        }).create().show();
+
+                Log.i("REQUEST", "Requesting permission....");
+                ActivityCompat.requestPermissions(MainActivity.this,
+                        new String[]{Manifest.permission.READ_CONTACTS},
+                        CONTACT);
+
+
+//                new AlertDialog.Builder(this)
+//                        .setMessage("We need Contact Permission to proceed")
+//                        .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                ActivityCompat.requestPermissions(MainActivity.this,new String[]
+//                                        {Manifest.permission.READ_CONTACTS},CONTACT);
+//                            }
+//                        })
+//                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.dismiss();
+//                            }
+//                        }).create().show();
             }
 
 
@@ -90,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
             if(permissions.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED ){
                 fetchContacts();
             }
+        }else {
+            Toast.makeText(this, "Permission denied please close the app", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -103,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 null);
 
         if(cursor!=null && cursor.getCount()>0){
-            StringBuilder stringBuilder= new StringBuilder("");
+            StringBuilder stringBuilder= new StringBuilder();
 
             while(cursor.moveToNext()){
 
