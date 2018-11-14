@@ -31,7 +31,7 @@ class GithubUserAdapter(private val githubUsers : ArrayList<GithubUser>): Recycl
              itemView?.tViewLogin?.text = githubUser.login
              itemView?.tViewScore?.text= githubUser.score.toString()
              itemView?.tViewUrl?.text=githubUser.html_url
-             Picasso.get().load(githubUser.avatar_url).into(itemView?.imageViewProfile);
+           //  Picasso.get().load(githubUser.avatar_url).into(itemView?.imageViewProfile)
          }
     }
 
