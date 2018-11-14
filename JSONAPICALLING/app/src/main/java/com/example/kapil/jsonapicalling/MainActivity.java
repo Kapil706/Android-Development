@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 // creating an object for network task
         NetworkTask networkTask = new NetworkTask();
         // in execute function arguments string url must go
-        networkTask.execute("https://www.google.com");
+        networkTask.execute("https://api.github.com/search/users?q=harshitgti ");
 
     }
 
