@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -24,11 +25,12 @@ import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
-
+    EditText editText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        editText = findViewById(R.id.etName);
 
 
         Button button = findViewById(R.id.btn);
@@ -41,12 +43,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updatetextView() {
+        String getUrl= "https://api.github.com/search/users?q="+editText.getText().toString();
 
         //  TextView textView = findViewById(R.id.textView);
 // creating an object for network task
         NetworkTask networkTask = new NetworkTask();
         // in execute function arguments string url must go
-        networkTask.execute("https://api.github.com/search/users?q=harshit ");
+        networkTask.execute(getUrl);
+        //networkTask.execute("https://api.github.com/search/users?q=harshit");
 
     }
 
