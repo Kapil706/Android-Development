@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Beach</string>
+    <string name="search">Search</string>
+    <string name="beach">Beach Name:</string>
+    <string name="skin_type">Skin Type:</string>
+    <string name="check">Check</string>
+    <string name="uv_status">UV status (Value):</string>
+    <string name="max_uv">Max UV Time (Value):</string>
+    <string name="med_placeholder">Maximum Exposure Duration allowed for your skin type (%s) is (%s) mins.</string>
+    <string name="status_value_placeholder">%s (%s)</string>
+    <string name="zero_uv_placeholder">Sun has not risen at %s. No UV data available currently</string>
+</resources>
