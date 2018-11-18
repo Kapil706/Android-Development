@@ -9,4 +9,8 @@
     <string name="med_placeholder">Maximum Exposure Duration allowed for your skin type (%s) is (%s) mins.</string>
     <string name="status_value_placeholder">%s (%s)</string>
     <string name="zero_uv_placeholder">Sun has not risen at %s. No UV data available currently</string>
+    <string name="blog_api_key">AIzaSyDfwaMdyyuFe_7NRA_n4T-KuBacOazuD6g</string>
+    <string name="safety">Safety</string>
+    <string name="blog">Blogs</string>
+    <string name="buy">Buy</string>
 </resources>

@@ -17,7 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.kapil.beach.rest.model.Ultraviolet;
+import com.example.kapil.beach.rest.SafetyActivity;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText beachET;
     private ImageView searchIcon;
     private Spinner skinTypeSelectionSpinner;
-    private Button checkResultButton;
+    private Button checkResultButton, openBlogButton, openSafetyButton;
     private ProgressBar loadingBar;
     private ImageView infoIcon;
 
@@ -48,11 +48,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         checkResultButton = findViewById(R.id.check_result_button);
         loadingBar = findViewById(R.id.loading_bar);
         infoIcon = findViewById(R.id.info_icon);
+        openBlogButton = findViewById(R.id.open_blog);
+        openSafetyButton = findViewById(R.id.open_protection);
 
         beachET.setOnClickListener(this);
         searchIcon.setOnClickListener(this);
         checkResultButton.setOnClickListener(this);
         infoIcon.setOnClickListener(this);
+        openBlogButton.setOnClickListener(this);
+        openSafetyButton.setOnClickListener(this);
         setSupportActionBar(toolbar);
 
         Repository.getInstance().saveSkinType(1);
@@ -113,6 +117,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.image_dialog
                         , null));
                 settingsDialog.show();
+                break;
+            case R.id.open_blog:
+                startActivity(new Intent(this, BlogActivity.class));
+                break;
+            case R.id.open_protection:
+                startActivity(new Intent(this, SafetyActivity.class));
                 break;
         }
     }

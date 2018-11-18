@@ -1,15 +1,21 @@
 package com.example.kapil.beach;
 
 import android.support.annotation.NonNull;
-import android.widget.Toast;
+import android.util.Log;
 
 import com.example.kapil.beach.rest.api.ApiClient;
 import com.example.kapil.beach.rest.api.ApiInterface;
+import com.example.kapil.beach.rest.api.BlogSpotApiClient;
+import com.example.kapil.beach.rest.api.BlogSpotApiInterface;
+import com.example.kapil.beach.rest.model.Item;
+import com.example.kapil.beach.rest.model.PostList;
 import com.example.kapil.beach.rest.model.SafeExposureTime;
 import com.example.kapil.beach.rest.model.Ultraviolet;
 import com.google.android.gms.location.places.Place;
 
 import org.json.JSONObject;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -111,8 +117,46 @@ class Repository {
         return place;
     }
 
+    void fetchBlogsList(final FetchBlogListListener fetchBlogListListener) {
+        BlogSpotApiInterface blogSpotApiInterface = BlogSpotApiClient.getClient().create(BlogSpotApiInterface.class);
+        blogSpotApiInterface.getBlog("AIzaSyDfwaMdyyuFe_7NRA_n4T-KuBacOazuD6g")
+                .enqueue(new Callback<PostList>() {
+                    @Override
+                    public void onResponse(@NonNull Call<PostList> call, @NonNull Response<PostList> response) {
+                        Log.d("response", response.body().toString());
+                        fetchBlogListListener.onListFetched(response.body());
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<PostList> call, @NonNull Throwable t) {
+
+                    }
+                });
+    }
+
+    void fetchBlog(String postId) {
+        BlogSpotApiInterface blogSpotApiInterface = BlogSpotApiClient.getClient().create(BlogSpotApiInterface.class);
+        blogSpotApiInterface.getBlogPost("AIzaSyDfwaMdyyuFe_7NRA_n4T-KuBacOazuD6g", postId)
+                .enqueue(new Callback<Item>() {
+                    @Override
+                    public void onResponse(@NonNull Call<Item> call, @NonNull Response<Item> response) {
+                        Log.d("response", response.body().toString());
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<Item> call, @NonNull Throwable t) {
+
+                    }
+                });
+    }
+
     interface UVDataListener {
         void onUVDataReceived();
+        void onError(String error);
+    }
+
+    interface FetchBlogListListener {
+        void onListFetched(PostList postLists);
         void onError(String error);
     }
 }
