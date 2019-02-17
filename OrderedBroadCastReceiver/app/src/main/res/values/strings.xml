@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">OrderedBroadCastReceiver</string>
+    <string name="action_settings">Settings</string>
+    <string name="startBroadcastReceiver">Start Broadcast Receiver</string>
+</resources>
